@@ -1,0 +1,17 @@
+.containerSearch{
+    padding: 15px;
+    border: none;
+   
+    margin-right: 16px;
+ 
+}
+.containerSearch a.active {
+    background-color: #2196F3;
+    color: white;
+  }
+
+  .inputSearch{
+      width: 400px;
+      height: 25px;
+      font-size: 15px;
+  }
