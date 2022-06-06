@@ -28,7 +28,7 @@ export default function CardDetail() {
                             <img src={videogame.image} className="imgDetailCard" alt="Imagen del jueego" />
                             <br></br>
                             <h3>Description</h3>
-                            <p>{videogame.description}</p>
+                            <p>{videogame.description.replace(/<[^>]+>/g, '')}</p>
                             <h3>Genres:</h3>
                             {videogame.genres?.map(e => {
                                 if (typeof (e) === 'string') {
