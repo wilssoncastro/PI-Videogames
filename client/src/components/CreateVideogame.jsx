@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useHistory } from "react-router-dom"
 import { getGenres, getPlatforms, postVideogameCreated } from '../redux/actions.js'
 import './styles/videoGameCreated.css'
-import axios from "axios"
+
 
 // const expresionDate = {
 //   date: /^(19|20)(((([02468][048])|([13579][26]))-02-29)|(\d{2})-((02-((0[1-9])|1\d|2[0-8]))|((((0[13456789])|1[012]))-((0[1-9])|((1|2)\d)|30))|(((0[13578])|(1[02]))-31)))$/
@@ -68,20 +68,24 @@ export default function AddVideogame() {
   }
 
   function handleSelectGenre(e) {
-    setVideogame({
-      ...videogame,
-      genre: [...videogame.genre, e.target.value]
-
-    })
+    if(e.target.value !== 'Select Genre')
+    if(!videogame.genre.includes(e.target.value)){
+      setVideogame({
+        ...videogame,
+        genre: [...videogame.genre, e.target.value],
+      });
+    }    
   }
   function handleSelectPlatforms(e) {
-
+    if(e.target.value !== 'Select Platform')
+    if(!videogame.platforms.includes(e.target.value)){
     setVideogame({
       ...videogame,
       platforms: [...videogame.platforms, e.target.value]
 
     })
   }
+}
 
   function handleDeleteGenres(el) {
 
@@ -246,7 +250,7 @@ export default function AddVideogame() {
             </div>
             <div>
               <select  className="selectBox" onChange={(e) => handleSelectGenre(e)} >
-                <option disabled={genres.length}>Select Genre</option>
+                <option disabled={videogame.genre.length > 0}>Select Genre</option>
                 {genres?.map((e) => (
                   <option value={e.name}>{e.name}</option>
                 ))}
@@ -279,7 +283,7 @@ export default function AddVideogame() {
             </div>
             <div>
               <select  className="selectBox" onChange={(e) => handleSelectPlatforms(e)} >
-                <option disabled={genres.length}>Select Platform</option>
+                <option disabled={videogame.platforms.length > 0}>Select Platform</option>
                 {platforms?.map((e) => (
                   <option value={e.name}>{e.name}</option>
                 )

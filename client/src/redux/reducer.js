@@ -1,3 +1,5 @@
+import { getDetail } from "./actions"
+
 const initialState = {
     videogames : [],
     allVideogames: [],
@@ -13,7 +15,9 @@ function rootReducer(state = initialState, action){
             return {
                 ...state,
                 videogames: action.payload,
-                allVideogames: action.payload
+                allVideogames: action.payload,
+                
+                  
             }
 
          
@@ -182,8 +186,11 @@ function rootReducer(state = initialState, action){
               detail: action.payload
 
           }
+          case 'DELETE_VIDEOGAME':
 
-          
+            return {
+              ...state
+          }                 
         
         default:
             return state

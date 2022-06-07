@@ -9,7 +9,9 @@ import {
     filterByCreated,
     filterByAlpha,
     filterByRating,
-    filterVideogameByPlatform
+    filterVideogameByPlatform,
+    getDetail
+    
 } from '../redux/actions.js'
 import { Link } from 'react-router-dom'
 import Paginado from "./Paginado.jsx";
@@ -25,13 +27,19 @@ export default function Home() {
     const allVideogamesLoad = useSelector((state) => state.allVideogames)
     const genres = useSelector((state) => state.genres);
     const platforms = useSelector((state) => state.platforms);
+    
+    
+
+    //orden alfabetico
     const [order, setOrder] = useState('')
+    //paginado
     const [currentPage, setCurrentPage] = useState(1)
     const [videogamesPerPage, setVideogamePerPage] = useState(15)
     const indexOfLastVideogame = currentPage * videogamesPerPage
     const indexOfFirstVideogame = indexOfLastVideogame - videogamesPerPage
     const currentVideogames = allVideogames.slice(indexOfFirstVideogame, indexOfLastVideogame)
-
+  
+   
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
     }
@@ -39,6 +47,7 @@ export default function Home() {
         dispatch(getAllVideogames())
         dispatch(getGenres());
         dispatch(getPlatforms())
+        
     }, [dispatch])
 
     function handleClick(e) {
@@ -100,13 +109,13 @@ export default function Home() {
                         <div >
                         </div>
                             <div >
-                                <select class="custom-select" onChange={e => { handleFilterByAlpha(e) }} >
+                                <select className="custom-select" onChange={e => { handleFilterByAlpha(e) }} >
                                     <option disabled={order}>Alphabetical order</option>
                                     <option value='asc'>A-Z</option>
                                     <option value='desc'>Z-A </option>
                                 </select>
                             </div>
-                            <select class="custom-select" id="ratingSelect" onChange={e => { handleFilterByRating(e) }}>
+                            <select className="custom-select" id="ratingSelect" onChange={e => { handleFilterByRating(e) }}>
                                 <option disabled={order}>Select Rating</option>
                                 <option value="asc">to the least popular</option>
                                 <option value="des">to the most popular</option>
@@ -115,7 +124,7 @@ export default function Home() {
 
 
 
-                            <select class="custom-select" name="genres" onChange={(e) => handleFilterGenre(e)}>
+                            <select className="custom-select" name="genres" onChange={(e) => handleFilterGenre(e)}>
                                 <option value={'all'}>All Genres</option>
 
                                 {genres?.map((x) => {
@@ -123,7 +132,7 @@ export default function Home() {
                                 })}
                             </select>
 
-                            <select class="custom-select" name="platforms" onChange={(e) => handleFilterPlatform(e)}>
+                            <select className="custom-select" name="platforms" onChange={(e) => handleFilterPlatform(e)}>
                                 <option value={'all'}>All Platforms</option>
 
                                 {platforms?.map((p) => {
@@ -131,7 +140,7 @@ export default function Home() {
                                 })}
                             </select>
 
-                            <select class="custom-select" id="originSelect" onChange={(e) => handleFilterByCreated(e)}>
+                            <select className="custom-select" id="originSelect" onChange={(e) => handleFilterByCreated(e)}>
                                 <option value="all">All Video Games</option>
                                 <option value="api">Existing</option>
                                 <option value="created">Created</option>

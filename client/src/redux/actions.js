@@ -6,6 +6,7 @@ export function getAllVideogames(){
         return dispatch({
             type: 'GET_ALL_VIDEOGAMES',
             payload: videogame.data
+            
         })
     }
 }
@@ -126,5 +127,20 @@ export function getDetail(id){
         }
     }
 }
+
+//DELETE VIDEOGAME
+
+export function deleteVideogame(id){
+    return function(dispatch){
+        return axios.delete(`http://localhost:3001/videogame/clear/${id}`)
+        .then(data => {
+            dispatch({
+                type:'DELETE_VIDEOGAME',
+                payload:data
+            })
+        })
+    }
+}
+
 
 
