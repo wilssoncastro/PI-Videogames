@@ -21,10 +21,17 @@ export default function CardDetail() {
     }, [dispatch, id])
 
     function handleDelete(id){
-        alert('Videogame')
-        dispatch(deleteVideogame(id))
-        history.push('/home')
-    }
+        function confirmacion(){
+           var respuesta = window.confirm('Are you sure you want to delete the game?')
+           if (respuesta === true){
+               dispatch(deleteVideogame(id))
+               history.push('/home')
+            }
+        } 
+        confirmacion()                    
+        }
+        
+    
 
 
     // useEffect(() => {

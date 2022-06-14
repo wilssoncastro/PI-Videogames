@@ -4,21 +4,32 @@ import { useDispatch } from "react-redux";
 import { getVidogamesByName } from "../redux/actions";
 import './styles/SearchBar.css'
 
+function validate(input) {
+    let error = "";
+    if (input === "") {
+        error = "PLEASE INSERT A NAME";
+    }
+    return error;
+}
+
 export default function SearchBar(){
     const dispatch = useDispatch()
     const [name, setName] = useState("")
-    
+    const [error, setError] =useState("")
     function handleInputChange(e){
         e.preventDefault();
         setName(e.target.value)
+        
         console.log(name)
     }
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault()
-        dispatch(getVidogamesByName(name))
-        setName("")
-       
+        if(name !== ""){
+            await dispatch(getVidogamesByName(name))
+            setName("")
+        }
+        setError(validate(name))       
     }
    
 
@@ -27,13 +38,16 @@ export default function SearchBar(){
         <input type="text"
         className="inputSearch"
          name="name"
+         value={name}
           placeholder="search game..." 
           onChange={e => handleInputChange(e)} />
         <button className="buttonHome"
-        type="submit"
+        type="submit"        
         onClick={(e) => handleSubmit(e)}
         >Search
         </button>
+        {error && (<h1 className="search-error">{error}</h1>)}
+        
     </div>
     )
     

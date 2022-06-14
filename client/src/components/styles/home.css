@@ -7,6 +7,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #efb810;
+  border-radius: 30px;
 }
 
 .custom-select{

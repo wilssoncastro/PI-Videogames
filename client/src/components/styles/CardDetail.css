@@ -5,13 +5,14 @@
     border-radius: 8px;
     color: rgb(255, 255, 255);
     background-color: #000000e5;
-    width: 1200px;
+    width: 1000px;
     margin-top: 20px;
     margin-bottom: 80px;
-    margin-left: 150px; 
-    background-size: 200% auto;
-    display: flex;    
+    margin-left: 150px;     
+    display: flex;      
+    overflow-x:hidden;
     align-items: center;  
+    justify-content: center;
     
 }
 

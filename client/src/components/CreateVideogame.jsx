@@ -310,10 +310,11 @@ export default function AddVideogame() {
 
           {/* Botón de envío */}
           <div className="createButton">
-            <button type="submit">Create</button>
+          <button type="submit" class="btn btn-primary">Create</button>
+            {/* <button type="submit">Create</button> */}
 
           </div>
-
+  
           <br />
 
         </form>

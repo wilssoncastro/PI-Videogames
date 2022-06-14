@@ -3,7 +3,7 @@ const { Router } = require('express');
 const router = Router();
 const getApiGames = require('../FunctionsApi&Db/GetApiGames')
 const getVideoGamesCreated = require('../FunctionsApi&Db/GetGamesCreated')
-const { v4: uuidv4 } = require('uuid');
+
 
 
 
@@ -28,9 +28,10 @@ router.get('/', async (req,res,next) => {
                 released: e.released,
                 image: e.background_image,
                 rating: e.rating,
-                description: e.slug,
+                decription: e.slug,
                 genres: e.genres.map((g) => g.name),
-                platforms: e.platforms.map((p) => p.platform.name)
+                platforms: e.platforms.map((p) => p.platform.name),
+                
                             
               };
               
@@ -41,7 +42,7 @@ router.get('/', async (req,res,next) => {
             let allVideogames = [...videogamesInDb, ...VideogamesfromApi];
            
            if(name){
-             let onlyfifteen = allVideogames.filter(e => e.name.includes(name.toUpperCase())).slice(0,16)
+             let onlyfifteen = allVideogames.filter(e => e.name.includes(name.toUpperCase())).slice(0,15)
              res.send(onlyfifteen);
            }else if(!allVideogames.length){
       

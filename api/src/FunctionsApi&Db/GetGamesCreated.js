@@ -14,7 +14,7 @@ async function getVideoGamesCreated(name){
               through : {
                 attributes : [],
               }
-            },{ // ----
+            },{
               model :Platform,
               attributes: ['name'],
               through : {

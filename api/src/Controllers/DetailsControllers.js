@@ -105,25 +105,27 @@ router.post("/", async (req, res, next) => {
 })
 
 
-/// actualizar videojuego
+// // / actualizar videojuego
 
-// router.put('/:id', async(req, res, next) => {
+// router.put('/update/:id', async(req, res, next) => {
 
-//   const { name, description, launched, platform, image } = req.body;
-//         const id = req.params.id;
+//   const { name, description, released, platform, image, genre } = req.body;
+//   const {id } = req.params
 
-//         try {
-
-//             let videogame = {}
+//         try {  let videogame = {
+//           name, 
+//           description,
+//           image,
+//           rating,
+//           released,
+//           genre, 
+//           platform, 
+//         }
 //                 // Guardo todas las propiedades que me vengan del body para cambiar
 //                 // Ya que no me pueden venir todas, si es undefined no la agarro.
-//             for (const property in req.body) {
-//                 if (property !== undefined) {
-//                     videogame[property] = req.body[property];
-//                 }
-//             }
-
-
+                
+            
+            
 //             // Promise 
 //             // return Videogame.update({...videogame},{ where: { id }}).then((x) => {res.send(x)});
             

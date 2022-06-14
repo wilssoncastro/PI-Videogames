@@ -6,10 +6,10 @@ const {
 
 async function getApiGames(name) {
   // arrays por pagina
-  let pageOne = [];
-  let pageTwo = [];
-  let pageThree = [];
-  let pageFour = [];
+  let pageOne = [];//25
+  let pageTwo = [];//25
+  let pageThree = [];//25
+  let pageFour = [];//25
 
   if (!name) {
     // Si no existe name proseguira a buscar las paginas:
@@ -56,5 +56,5 @@ async function getApiGames(name) {
 module.exports = getApiGames;
 
 
-///otro caso donde deba tomar 15 de mi propia base y api
+
 

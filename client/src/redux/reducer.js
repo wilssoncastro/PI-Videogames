@@ -1,4 +1,3 @@
-import { getDetail } from "./actions"
 
 const initialState = {
     videogames : [],

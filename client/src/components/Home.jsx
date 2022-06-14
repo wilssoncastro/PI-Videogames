@@ -58,10 +58,12 @@ export default function Home() {
     function handleFilterGenre(e) {
         e.preventDefault()
         dispatch(filterVideogameByGenre(e.target.value))
+        setCurrentPage(1)
     }
     function handleFilterPlatform(e) {
         e.preventDefault()
         dispatch(filterVideogameByPlatform(e.target.value))
+        setCurrentPage(1)
     }
 
     function handleFilterByCreated(e) {
@@ -81,6 +83,7 @@ export default function Home() {
         setCurrentPage(1)
         setOrder(e.target.value)
     }
+    
 
     return (
         <div className="allHome">
@@ -169,7 +172,9 @@ export default function Home() {
                                         image={e.image}
                                         genres={e.genres}
                                         platforms={e.platforms}
-                                        rating={e.rating} />
+                                        rating={e.rating}
+                                         />
+                                        
                                 </Link>
 
                             )

@@ -23,6 +23,11 @@
     background-color: #efb810;
 }
 
+.paginado a:active{
+    background: rgb(237, 0, 0);
+    color: aliceblue;
+}
+
 
 .paginado a:hover{
     background: #000000;

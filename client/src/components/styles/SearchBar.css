@@ -15,3 +15,7 @@
       height: 25px;
       font-size: 15px;
   }
+
+  .search-error{
+      color: red
+  }
